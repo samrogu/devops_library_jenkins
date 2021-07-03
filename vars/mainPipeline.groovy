@@ -8,6 +8,14 @@ def call(int buildNumber) {
             echo "The build number is even"
           }
         }
+        stage('Maven Old Stage') {
+          git 'https://github.com/samrogu/fly-config-server.git'
+          container('maven') {
+            stage('Build a Maven project') {
+              sh 'mvn -B -ntp clean install'
+            }
+          }
+        }
       }
     }
   } else {
@@ -17,6 +25,14 @@ def call(int buildNumber) {
         stage('Odd Stage') {
           steps {
             echo "The build number is odd"
+          }
+        }
+        stage('Maven Old Stage') {
+          git 'https://github.com/samrogu/fly-config-server.git'
+          container('maven') {
+            stage('Build a Maven project') {
+              sh 'mvn -B -ntp clean install'
+            }
           }
         }
       }
