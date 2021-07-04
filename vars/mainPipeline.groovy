@@ -8,11 +8,10 @@ def call(int buildNumber) {
             echo "The build number is even"
           }
         }
-        stage('Maven Old Stage') {
+        stage('Maven Event Stage') {
           steps{
 				container('maven') {
-					git 'https://github.com/samrogu/fly-config-server.git'
-					sh 'mvn -B -ntp clean install'
+					sh 'mvn --version'
 				}
 			}
         }
@@ -30,8 +29,7 @@ def call(int buildNumber) {
         stage('Maven Old Stage') {
 			steps{
 				container('maven') {
-					git 'https://github.com/samrogu/fly-config-server.git'
-					sh 'mvn -B -ntp clean install'
+					sh 'mvn -B'
 				}
 			}          
         }
