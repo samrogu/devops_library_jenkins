@@ -5,7 +5,7 @@ def call(int buildNumber) {
       stages {
         stage('Even Stage') {
 	  agent {
-	      label "principal"
+	      label "Principal"
 	  }
           steps {
             echo "The build number is even"
@@ -29,7 +29,7 @@ def call(int buildNumber) {
       stages {
         stage('Odd Stage') {
 	agent {
-	      label "principal"
+	      label "Principal"
 	  }
           steps {
             echo "The build number is odd"
