@@ -1,6 +1,5 @@
 def call(int buildNumber) {
-  if (buildNumber % 2 == 0) {
-    pipeline {
+  pipeline {
       agent none
       stages {
         stage('Even Stage') {
@@ -14,34 +13,12 @@ def call(int buildNumber) {
 	      label "maven-exec"
 	  }
           steps{
+		  checkout scm
 				container('maven') {
-					sh 'mvn --version'
+					sh 'mvn clean install'
 				}
 			}
         }
       }
     }
-  } else {
-    pipeline {
-      agent none
-      stages {
-        stage('Odd Stage') {
-	agent any
-          steps {
-            echo "The build number is odd"
-          }
-        }
-        stage('Maven Old Stage') {
-		agent {
-	      label "maven-exec"
-	  }
-			steps{
-				container('maven') {
-					sh 'mvn -B'
-				}
-			}          
-        }
-      }
-    }
-  }
 }
