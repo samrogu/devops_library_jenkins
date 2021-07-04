@@ -11,10 +11,8 @@ def call(int buildNumber) {
         stage('Maven Old Stage') {
           steps{
 				container('maven') {
-					stage('Build a Maven project') {
-					  git 'https://github.com/samrogu/fly-config-server.git'
-					  sh 'mvn -B -ntp clean install'
-					}
+					git 'https://github.com/samrogu/fly-config-server.git'
+					sh 'mvn -B -ntp clean install'
 				}
 			}
         }
@@ -32,10 +30,8 @@ def call(int buildNumber) {
         stage('Maven Old Stage') {
 			steps{
 				container('maven') {
-					stage('Build a Maven project') {
-					  git 'https://github.com/samrogu/fly-config-server.git'
-					  sh 'mvn -B -ntp clean install'
-					}
+					git 'https://github.com/samrogu/fly-config-server.git'
+					sh 'mvn -B -ntp clean install'
 				}
 			}          
         }
