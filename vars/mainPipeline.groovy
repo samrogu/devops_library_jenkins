@@ -3,10 +3,10 @@ def call(int buildNumber) {
     pipeline {
       agent none
       stages {
-	agent {
+        stage('Even Stage') {
+	  agent {
 	      label "master"
 	  }
-        stage('Even Stage') {
           steps {
             echo "The build number is even"
           }
